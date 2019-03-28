@@ -1,0 +1,21 @@
+#General Component Desciption
+component : "spark-worker"
+type: spark_worker
+version : 2.5.13
+docker_hub_tag : ""
+site_level_config_version: 1.0
+default_var_prefix: spark_worker_default_var
+runtime_vars:
+  - worker_runtime_var_host
+host_requirements:
+    firewall:
+    - ports: 8081
+      protocol: tcp
+      action: accept
+      ipv6: true
+docker_run_parameters:
+  privileged: true
+  detached: true
+  tty: true
+  ports: "8081:8081"
+  command: /bin/bash
