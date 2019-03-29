@@ -1,0 +1,3 @@
+expected-from-site-level-config:
+    enable_init_daemon: { type: bool(), required: true, use_default: true}
+    SPARK_MASTER: { type: str(), required: true, use_default: true}

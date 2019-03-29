@@ -14,6 +14,7 @@ host_requirements:
       action: accept
       ipv6: true
 docker_run_parameters:
+  hostname: *worker_runtime_var_host
   privileged: true
   detached: true
   tty: true
