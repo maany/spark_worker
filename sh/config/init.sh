@@ -1,13 +1,13 @@
 #!/bin/bash
 
-. "/spark/sbin/spark-config.sh"
+. "/etc/simple_grid/config/spark-config.sh"
+. "/etc/simple_grid/config/spark_env.sh"
 
-. "/spark/bin/load-spark-env.sh"
 
+cat /etc/simple_grid/config/spark_env.sh >> ~/.bashrc
+
+source ~/.bashrc
 mkdir -p $SPARK_WORKER_LOG
-
-export SPARK_HOME=/spark
-
 ln -sf /dev/stdout $SPARK_WORKER_LOG/spark-worker.out
 
 /spark/sbin/../bin/spark-class org.apache.spark.deploy.worker.Worker \
