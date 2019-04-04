@@ -18,5 +18,6 @@ docker_run_parameters:
   privileged: true
   detached: true
   tty: true
-  ports: "8081:8081"
+  ports:
+    - "8081:8081"
   command: /bin/bash
