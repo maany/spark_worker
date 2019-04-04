@@ -1,5 +1,5 @@
 #!/bin/bash
-
+docker stop simple_spark_worker && docker rm simple_spark_worker
 ### BOOT EVENT ###
 sudo docker build -t simple_spark_worker sh/
 sudo docker run -itd \
