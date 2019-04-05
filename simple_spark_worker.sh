@@ -13,6 +13,6 @@ sudo docker run -itd \
 
 
 ### INIT EVENT ######
-sudo docker exec -st simple_spark_worker /etc/simple_grid/config/init.sh
-
+sudo docker exec -t simple_spark_worker /etc/simple_grid/config/init.sh
+sudo docker exec -it simple_spark_worker bash
 #### POST INIT HOOKS ######
