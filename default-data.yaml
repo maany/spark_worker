@@ -1,5 +1,6 @@
 spark-worker-expected-from-site-level-config:
   spark_worker_default_var_enable_init_daemon: false
-  spark_worker_default_var_SPARK_MASTER: spark://spark-master:7077
+  spark_worker_default_var_spark_master:
+    __from__: *spark_worker_runtime_var_spark_master
   spark_worker_default_var_spark_eventLog_enabled: false
   spark_worker_default_var_spark_ui_enabled: true

@@ -4,9 +4,9 @@ type: spark_worker
 version : 2.5.13
 docker_hub_tag : ""
 site_level_config_version: 1.0
-default_var_prefix: spark_worker_default_var
 runtime_vars:
-  - worker_runtime_var_host
+  - spark_worker_runtime_var_spark_master
+default_var_prefix: spark_worker_default_var
 host_requirements:
     firewall:
     - ports: 8081

@@ -1,5 +1,5 @@
 expected-from-site-level-config:
     enable_init_daemon: { type: bool(), required: true, use_default: true}
-    SPARK_MASTER: { type: str(), required: true, use_default: true}
+    spark_master: { type: str(), required: true, use_default: true}
     spark_eventLog_enabled: {type: bool(), required: true, use_default: true}
     spark_ui_enabled: {type: bool(), required: true, use_default: true}
