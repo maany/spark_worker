@@ -9,7 +9,6 @@ sudo docker run -itd \
     -v $(pwd)/sh/config:/etc/simple_grid/config \
     -v $(pwd)/augmented_site_level_config_file.yaml:/etc/simple_grid/augmented_site_level_config_file.yaml \
     simple_spark_worker \
-    /bin/bash
 #### PRE INIT HOOKS #####
 
 
