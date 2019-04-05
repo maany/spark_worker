@@ -42,7 +42,8 @@ def get_spark_default_config_file_content(data, execution_id):
     config.append("spark.eventLog.enabled {value}".format(value=str(spark_eventLog_enabled).lower()))
     # process supplemental config
     supplemental_config = current_lightweight_component['supplemental_config']
-    for config_file in supplemental_config:
+    if supplemental_config is not None:
+        for config_file in supplemental_config:
             if config_file == "spark-defaults.conf":
                 for config_value in supplemental_config['spark-defaults.conf']:
                     config.append(config_value)

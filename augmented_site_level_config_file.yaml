@@ -1,0 +1,296 @@
+spark-master-expected-from-site-level-config:
+  spark_master_default_var_enable_init_daemon: false
+  spark_master_default_var_spark_eventLog_enabled: false
+  spark_master_default_var_spark_ui_enabled: true
+meta_info_spark-master:
+  component: spark-master
+  type: spark_master
+  version: 2.5.13
+  docker_hub_tag: ''
+  site_level_config_version: 1.0
+  default_var_prefix: spark_master_default_var
+  runtime_vars:
+  - master_runtime_var_host
+  host_requirements:
+    firewall:
+    - ports: 8080
+      protocol: tcp
+      action: accept
+      ipv6: true
+    - ports: 7077
+      protocol: tcp
+      action: accept
+      ipv6: true
+    - ports: 6066
+      protocol: tcp
+      action: accept
+      ipv6: true
+  docker_run_parameters:
+    hostname: simple-lc01.cern.ch
+    privileged: true
+    detached: true
+    tty: true
+    ports:
+    - 8080:8080
+    - 7077:7077
+    - 6066:6066
+default_group_opssgm:
+  gid: 46001
+  name: opssgm
+default_pool_accounts_alicesgm:
+  base_name: sgmali
+  initial_uid: 60101
+  users_num: 10
+  primary_group:
+    gid: 1397
+    name: alicesgm
+  secondary_groups:
+  - gid: 1395
+    name: alice
+site_infrastructure:
+- fqdn: simple-lc01.cern.ch
+  ip_address: 188.184.104.25
+- fqdn: simple-lc02.cern.ch
+  ip_address: 188.184.30.19
+- fqdn: simple-lc03.cern.ch
+  ip_address: 188.185.84.189
+spark_worker_runtime_variables:
+- simple-lc02.cern.ch
+- simple-lc01.cern.ch
+default_pool_accounts_alice:
+  base_name: alice
+  initial_uid: 10417
+  users_num: 5
+  primary_group:
+    gid: 1395
+    name: alice
+  secondary_groups: []
+default_group_dteamsgm:
+  gid: 2680
+  name: dteamsgm
+preferred_tech_stack:
+  level_1_configuration: puppet
+  level_2_configuration: sh
+  container_orchestration: docker-swarm
+  container: docker
+default_pool_accounts_dteam:
+  base_name: dteam
+  initial_uid: 18118
+  users_num: 10
+  primary_group:
+    gid: 2688
+    name: dteam
+  secondary_groups: []
+default_vo_dteam:
+  name: dteam
+  servers:
+  - server: voms2.cern.ch
+    port: '15001'
+    dn: /DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch
+    ca_dn: /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+  - server: lcg-voms2.cern.ch
+    port: '15001'
+    dn: /DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch
+    ca_dn: /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+  default_se: not_used.some-domain
+  sw_dir: .
+  storage_dir: /storage/dteam
+default_group_ops:
+  gid: 45000
+  name: ops
+meta_info_spark-submit:
+  component: spark-submit
+  type: spark_submit
+  version: 2.5.13
+  docker_hub_tag: ''
+  site_level_config_version: 1.0
+  default_var_prefix: spark_submit_default_var
+  runtime_vars:
+  - submit_runtime_var_host
+  host_requirements:
+    firewall:
+    - ports: 38999
+      protocol: tcp
+      action: accept
+      ipv6: true
+  docker_run_parameters:
+    privileged: true
+    detached: true
+    tty: true
+    ports:
+    - 38999:38999
+    command: /bin/bash
+default_group_alicesgm_name: alicesgm
+default_group_ops_name: ops
+default_pool_accounts_dteamsgm:
+  base_name: sgmdtm
+  initial_uid: 60501
+  users_num: 5
+  primary_group:
+    gid: 2680
+    name: dteamsgm
+  secondary_groups:
+  - gid: 2688
+    name: dteam
+spark-submit-expected-from-site-level-config:
+  spark_submit_default_var_enable_init_daemon: false
+  spark_submit_default_var_SPARK_MASTER: spark://spark-master:7077
+  spark_submit_default_var_spark_eventLog_enabled: false
+  spark_submit_default_var_spark_ui_enabled: true
+default_group_alice_name: alice
+default_vo_generic_dn_ca_cern: /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+default_group_alicesgm:
+  gid: 1397
+  name: alicesgm
+default_vo_alice:
+  name: alice
+  servers:
+  - server: voms2.cern.ch
+    port: '15000'
+    dn: /DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch
+    ca_dn: /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+  - server: lcg-voms2.cern.ch
+    port: '15000'
+    dn: /DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch
+    ca_dn: /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+  default_se: not_used.some-domain
+  sw_dir: .
+  storage_dir: /not/used
+default_vo_generic_server_primary: voms2.cern.ch
+default_vo_ops:
+  name: ops
+  servers:
+  - server: voms2.cern.ch
+    port: '15009'
+    dn: /DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch
+    ca_dn: /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+  - server: lcg-voms2.cern.ch
+    port: '15009'
+    dn: /DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch
+    ca_dn: /DC=ch/DC=cern/CN=CERN Grid Certification Authority
+  default_se: not_used.some-domain
+  sw_dir: .
+  storage_dir: /storage/ops
+default_group_dteam:
+  gid: 2688
+  name: dteam
+meta_info_spark-worker:
+  component: spark-worker
+  type: spark_worker
+  version: 2.5.13
+  docker_hub_tag: ''
+  site_level_config_version: 1.0
+  runtime_vars:
+  - spark_worker_runtime_var_spark_master
+  - spark_worker_runtime_var_host
+  default_var_prefix: spark_worker_default_var
+  host_requirements:
+    firewall:
+    - ports: 8081
+      protocol: tcp
+      action: accept
+      ipv6: true
+  docker_run_parameters:
+    hostname: simple-lc02.cern.ch
+    privileged: true
+    detached: true
+    tty: true
+    ports:
+    - 8081:8081
+spark_master_runtime_variables:
+- simple-lc01.cern.ch
+default_vo_generic_dn_server_secondary: /DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch
+default_pool_account_ops:
+  base_name: ops
+  initial_uid: 45001
+  users_num: 10
+  primary_group:
+    gid: 45000
+    name: ops
+  secondary_groups: []
+default_pool_account_opssgm:
+  base_name: sgmops
+  initial_uid: 60701
+  users_num: 10
+  primary_group:
+    gid: 45000
+    name: ops
+  secondary_groups:
+  - gid: 46001
+    name: opssgm
+default_group_alice:
+  gid: 1395
+  name: alice
+spark-worker-expected-from-site-level-config:
+  spark_worker_default_var_enable_init_daemon: false
+  spark_worker_default_var_spark_master: simple-lc01.cern.ch
+  spark_worker_default_var_spark_event_log_enabled: true
+default_group_dteamsgm_name: dteamsgm
+default_group_opssgm_name: opssgm
+default_vo_generic_dn_server_primary: /DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch
+default_vo_generic_server_secondary: lcg-voms2.cern.ch
+lightweight_components:
+- name: spark-master
+  deploy:
+    node: simple-lc01.cern.ch
+    container_count: 1
+  config:
+    spark_ui_enabled: true
+    spark_eventLog_enabled: false
+    enable_init_daemon: false
+  repository_revision: master
+  supplemental_config:
+    spark-defaults.conf:
+    - spark.memory.fraction 0.75
+    - spark.executor.memory 1g
+    - spark.driver.cores 1
+  repository_url: https://github.com/maany/spark_master
+  type: spark_master
+  container_count: 1
+  id: 0
+  execution_id: 0
+- name: spark-worker
+  deploy:
+    node: simple-lc02.cern.ch
+    container_count: 1
+  config:
+    spark_master: simple-lc01.cern.ch
+    spark_event_log_enabled: true
+    enable_init_daemon: false
+  repository_revision: master
+  supplemental_config:
+  repository_url: https://github.com/maany/spark_worker
+  type: spark_worker
+  container_count: 1
+  id: 1
+  execution_id: 1
+- name: spark-submit
+  deploy:
+    node: simple-lc03.cern.ch
+    container_count: 1
+  config:
+    SPARK_MASTER: spark://spark-master.cern.ch:7077
+    spark_ui_enabled: true
+    spark_eventLog_enabled: false
+    enable_init_daemon: false
+  repository_revision: master
+  supplemental_config:
+    spark-defaults.conf:
+    - spark.memory.fraction 0.75
+    - spark.executor.memory 1g
+    - spark.driver.cores 1
+  repository_url: https://github.com/maany/spark_submit
+  type: spark_submit
+  container_count: 1
+  id: 2
+  execution_id: 2
+global_variables:
+- 188.184.104.25
+- simple-lc01.cern.ch
+- 188.184.30.19
+- simple-lc02.cern.ch
+- 188.185.84.189
+- simple-lc03.cern.ch
+default_group_dteam_name: dteam
+spark_submit_runtime_variables:
+- simple-lc03.cern.ch
