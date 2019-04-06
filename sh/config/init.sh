@@ -12,7 +12,7 @@ source ~/.bashrc
 mkdir -p $SPARK_WORKER_LOG
 echo "Copying spark-defaults.conf to /spark/conf"
 cp /etc/simple_grid/conf/spark-defaults.conf /spark/conf/
-echo "Starting spark worker"
+echo "Starting Spark Worker"
 /spark/bin/spark-class org.apache.spark.deploy.worker.Worker \
     --webui-port $SPARK_WORKER_WEBUI_PORT $SPARK_MASTER >> $SPARK_WORKER_LOG/spark-worker.out 2>&1 </dev/null &
 echo "All Set!"
